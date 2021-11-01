@@ -1,0 +1,15 @@
+.igLogo{
+    width: 100px;
+    height: 30px;
+}
+.navbar{
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid grey;
+    align-items: center;
+    justify-content: center;
+}
+.content{
+    display: flex;
+    justify-content: center;
+}
