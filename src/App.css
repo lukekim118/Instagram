@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+}
+.instagramLogo{
+    width: 200px;
+    height: 40px;
+    object-fit: contain;
+    padding: 20px;
+}
+.appHeader{
+    background-color: white;
+    border-bottom: 1px solid lightgrey;
+    
+}
+.app{
+    background-color: #fafafa;
+    
+    height: 100vh;
+}
+.modal{
+    position: "absolute";
+    width: 400;
+    /* background-color: black; */
+    border: "2px solid #000";
+    box-shadow: 5;
+    padding: 2, 4, 3;
+    top:50%;
+    left: 50%;
+}
+.appSignup{
+    display: flex;
+    flex-direction: column;
+}
