@@ -10,6 +10,8 @@
 .appHeader{
     background-color: white;
     border-bottom: 1px solid lightgrey;
+    display: flex;
+    justify-content: space-between;
     
 }
 .app{
@@ -30,4 +32,8 @@
 .appSignup{
     display: flex;
     flex-direction: column;
+
+}
+.appPosts{
+    padding: 20px;
 }

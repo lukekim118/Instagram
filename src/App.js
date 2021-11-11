@@ -5,6 +5,7 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import { Input, makeStyles } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
+import InstagramEmbed from "react-instagram-embed";
 // functions differences (3 to 4)
 // this.pointer
 // bracket uses
@@ -161,14 +162,31 @@ function App() {
         </div>)}
       </div>
       
-      {posts.map(({ id, post }) => (
-        <Post
-          key={id}
-          username={post.username}
-          caption={post.caption}
-          imageUrl={post.imageUrl}
-        />
-      ))}
+      <div className="appPosts">
+        {posts.map(({ id, post }) => (
+          <Post
+            key={id}
+            postId={id}
+            user={user}
+            username={post.username}
+            caption={post.caption}
+            imageUrl={post.imageUrl}
+          />
+        ))}
+      </div>
+
+      <InstagramEmbed
+        url="https://www.instagram.com/p/CRgzQ3zFv9_/"
+        maxWidth={320}
+        hideCaption={false}
+        containerTagName='div'
+        protocol=''
+        injectScript
+        onLoading={()=>{}}
+        onSuccess={()=>{}}
+        onAfterRender={()=>{}}
+        onFailure={()=>{}}
+      />
       {user?.displayName ? 
         (<ImageUpload username={user.displayName}/>):(
         <h3>Sorry you need to login to upload</h3>

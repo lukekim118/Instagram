@@ -21,3 +21,21 @@
 .postAvatar{
     margin-right: 10px;
 }
+.postCommentBox{
+    display: flex;
+    margin-top: 10px;
+}
+.postInput{
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-top: 1px solid lightgray;
+}
+.postButton{
+    flex: 0;
+    border: none;
+    border-top: 1px solid lightgray;
+}
+.postComments{
+    padding: 20px;
+}
