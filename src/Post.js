@@ -15,7 +15,7 @@ function Post({postId,user,username,caption,imageUrl}) {
           .collection("posts")
           .doc(postId)
           .collection("comments")
-          .orderBy("timestamp",'desc')
+          .orderBy("timestamp")
           .onSnapshot((snapshot)=>{
             setComments(snapshot.docs.map((doc)=>doc.data()));
           });
@@ -26,12 +26,12 @@ function Post({postId,user,username,caption,imageUrl}) {
       },[postId]);
     const postComment = (event) => {
         event.preventDefault();
-        db.collection("posts").doc(postId).collection(comments).add({
+        db.collection("posts").doc(postId).collection("comments").add({
             text: comment,
             username: user.displayName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
-        setComments('');
+        setComment('');
     }
     return (
         <div className="post">
@@ -52,22 +52,24 @@ function Post({postId,user,username,caption,imageUrl}) {
                     </p>
                 ))}
             </div>
-
-            <form>
-                <input
-                    className="postInput"
-                    type="text"
-                    placeholder="Add a comment..."
-                    value={comment}
-                    onChange={(e)=>{setComment(e.target.value)}}
-                />
-                <button
-                    disabled={!comment}
-                    className="postButton"
-                    type="submit"
-                    onClick={postComment}
-                >Post</button>
-            </form>  
+                {user && 
+                    <form>
+                    <input
+                        className="postInput"
+                        type="text"
+                        placeholder="Add a comment..."
+                        value={comment}
+                        onChange={(e)=>{setComment(e.target.value)}}
+                    />
+                    <button
+                        disabled={!comment}
+                        className="postButton"
+                        type="submit"
+                        onClick={postComment}
+                    >Post</button>
+                </form> 
+                }
+             
         </div>
     )
 }

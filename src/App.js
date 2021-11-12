@@ -40,7 +40,7 @@ function App() {
   const [user,setUser] = useState(null);
   const [openSignIn, setOpenSignIn] = useState(false);
   useEffect(() => {
-    db.collection("posts").orderBy("timestamp").onSnapshot((snapshot) => {
+    db.collection("posts").orderBy("timestamp","desc").onSnapshot((snapshot) => {
       setPosts(
         snapshot.docs.map((doc) => ({
           id: doc.id,

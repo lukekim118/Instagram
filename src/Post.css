@@ -1,7 +1,9 @@
 .post{
-    max-width: 500px;
+    /* max-width: 500px; */
+    width: 70%;
     border: 1px solid lightgrey;
     margin-bottom: 45px;
+    margin: auto;
 }
 .postImage{
     width: 100%;
@@ -34,6 +36,8 @@
 .postButton{
     flex: 0;
     border: none;
+    border-top: 1px solid lightgray;
+    background-color: transparent;
     border-top: 1px solid lightgray;
 }
 .postComments{
