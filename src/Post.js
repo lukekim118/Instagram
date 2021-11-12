@@ -37,6 +37,7 @@ function Post({postId,user,username,caption,imageUrl}) {
         <div className="post">
             <div className="postHeader">
                 <Avatar 
+                id="postAvatar"
                 className="postAvatar"
                 alt="lukekim118"
                 src="/static/images/avatar/1.jpg"
@@ -44,16 +45,17 @@ function Post({postId,user,username,caption,imageUrl}) {
                  <h3>{username}</h3>
             </div> 
             <img className="postImage" src={imageUrl}></img>
-            <h4 className="postText"><strong>{username} </strong>{caption}</h4>
+            <p id="postText" className="postText"><strong>{username} </strong>{caption}</p>
             <div className="postComments">
                 {comments.map((comment)=>(
-                    <p>
-                         <b>{comment.username}</b> {comment.text}
+                    <p className="txt">
+                         <b className="txt">{comment.username}</b> {comment.text}
                     </p>
                 ))}
             </div>
                 {user && 
-                    <form>
+                <div className="addComment">
+                    <form className="addComment">
                     <input
                         className="postInput"
                         type="text"
@@ -67,7 +69,9 @@ function Post({postId,user,username,caption,imageUrl}) {
                         type="submit"
                         onClick={postComment}
                     >Post</button>
-                </form> 
+                </form>
+                </div> 
+
                 }
              
         </div>

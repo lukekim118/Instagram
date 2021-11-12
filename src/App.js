@@ -5,7 +5,7 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import { Input, makeStyles } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
-import InstagramEmbed from "react-instagram-embed";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // functions differences (3 to 4)
 // this.pointer
 // bracket uses
@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme)=>({
   },
 }))
 function App() {
+  const [uploadOpen,setUploadOpen] = useState(false);
   const [posts, setPosts] = useState([]);
   const [modalStyles] = useState(getModalStyle);
   const classes = useStyles();
@@ -91,7 +92,7 @@ function App() {
   }
   return (
     <div className="App">
-        <Modal open={open} onClose={()=>setOpen(false)} >
+        <Modal id="modal" open={open} onClose={()=>setOpen(false)} >
               <div style={modalStyles} className={classes.paper}>
                 <form className="appSignup">
                   <center>
@@ -123,7 +124,7 @@ function App() {
               </form>
               </div>
         </Modal>
-        <Modal open={openSignIn} onClose={()=>setOpenSignIn(false)} >
+        <Modal id="modal" open={openSignIn} onClose={()=>setOpenSignIn(false)} >
               <div style={modalStyles} className={classes.paper}>
                 <form className="appSignup">
                   <center>
@@ -149,20 +150,38 @@ function App() {
               </form>
               </div>
         </Modal>
-      <div className="appHeader">
-        <img
-          alt="instagram logo"
-          src="instagramlogo.png"
-          className="instagramLogo"
-        ></img>
-        {user ? (<Button onClick={() =>{auth.signOut(true)}}>Logout</Button>):
-        (<div className="appLoginContainer">
-          <Button onClick={() =>{setOpenSignIn(true)}}>Sign in</Button>
-          <Button onClick={() =>{setOpen(true)}}>Sign Up</Button>
-        </div>)}
+        <Modal id="modal" open={uploadOpen} onClose={()=>setUploadOpen(false)}>
+        <div style={modalStyles} className={classes.paper}>
+        {uploadOpen && user?.displayName ? 
+          (<ImageUpload username={user.displayName}/>):(
+          <h3>Sorry you need to login to upload</h3>
+          )}
+        </div>
+      </Modal>
+      <div className="appHeader" id="appHeader">
+        <figure>
+            <picture>
+              <source media="(max-width: 1000px)" srcset="igwhite.png"/>
+              <img
+                alt="instagram logo"
+                src="instagramlogo.png"
+                className="instagramLogo"
+              ></img>
+              <i class="far fa-plus-square"></i>
+            </picture>
+        </figure>  
+          {user ? (<div className="appLoginContainer">
+                  <Button onClick={() =>{auth.signOut(true)}}><p id="p">Logout</p></Button>
+                  <Button onClick={()=>setUploadOpen(true)}><p>Upload</p></Button>
+                  </div>):
+          (<div className="appLoginContainer">
+            
+            <Button onClick={() =>{setOpenSignIn(true)}}><p id="plus">Sign in</p></Button>
+            <Button onClick={() =>{setOpen(true)}}><p>Sign Up</p></Button>
+          </div>)}    
       </div>
       
-      <div className="appPosts">
+      <div className="appPosts" id="appPosts">
         {posts.map(({ id, post }) => (
           <Post
             key={id}
@@ -174,23 +193,6 @@ function App() {
           />
         ))}
       </div>
-
-      <InstagramEmbed
-        url="https://www.instagram.com/p/CRgzQ3zFv9_/"
-        maxWidth={320}
-        hideCaption={false}
-        containerTagName='div'
-        protocol=''
-        injectScript
-        onLoading={()=>{}}
-        onSuccess={()=>{}}
-        onAfterRender={()=>{}}
-        onFailure={()=>{}}
-      />
-      {user?.displayName ? 
-        (<ImageUpload username={user.displayName}/>):(
-        <h3>Sorry you need to login to upload</h3>
-        )}
     </div>
   )
 }

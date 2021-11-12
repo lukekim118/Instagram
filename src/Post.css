@@ -2,8 +2,8 @@
     /* max-width: 500px; */
     width: 70%;
     border: 1px solid lightgrey;
-    margin-bottom: 45px;
     margin: auto;
+    margin-top: 45px;
 }
 .postImage{
     width: 100%;
@@ -13,7 +13,8 @@
 }
 .postText{
     font-weight: normal;
-    padding: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
 }
 .postHeader{
     display: flex;
@@ -23,9 +24,14 @@
 .postAvatar{
     margin-right: 10px;
 }
+#postAvatar{
+    width: 22px;
+    height: 22px;
+}
 .postCommentBox{
     display: flex;
     margin-top: 10px;
+    width: fit-content;
 }
 .postInput{
     flex: 1;
@@ -38,8 +44,65 @@
     border: none;
     border-top: 1px solid lightgray;
     background-color: transparent;
-    border-top: 1px solid lightgray;
 }
 .postComments{
     padding: 20px;
+}
+.far{
+    color: black;
+}
+
+@media screen and (max-width:700px) {
+    .post{
+        margin: none;
+        border: 1px solid black;
+        width: 100%;
+        background-color: black;
+    }
+    .post h3{
+        font-size: .8em;
+    }
+    .postHeader{
+        background-color: black;
+        padding: 10px;
+        height: 20px;
+        border-top: black;
+    }
+    .postHeader h3{
+        color: white;
+    }
+    #postText{
+        color: white;
+        font-size: .85em;
+    }
+    .postImage{
+        border: none;
+    }
+    .MuiAvatar-root{
+        width: 20px;
+        height: 20px;
+    }
+    .txt{
+        color: white;
+        font-size: .85em;
+    }
+    .postButton{
+        border: none;
+        color: white;
+        margin-right: 10px;
+        background-color: black;
+    }
+    .addComment{
+        border: 1px solid white;
+        width: 100%;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+    }
+    .postInput{
+        border: none;
+        margin-left: 20px;
+        background-color: black;
+    }
 }

@@ -2,10 +2,9 @@
     margin: 0;
 }
 .instagramLogo{
-    width: 200px;
+    width: 92px;
     height: 40px;
-    object-fit: contain;
-    padding: 20px;
+    padding: 15px;
 }
 .appHeader{
     background-color: white;
@@ -22,7 +21,6 @@
 .modal{
     position: "absolute";
     width: 400;
-    /* background-color: black; */
     border: "2px solid #000";
     box-shadow: 5;
     padding: 2, 4, 3;
@@ -37,4 +35,47 @@
 .appPosts{
     padding: 20px;
     
+}
+
+@media (max-width: 700px){
+    *{
+        /* background-color: black; */
+    }
+    #plus{
+        color: white;
+    }
+    #appHeader{
+        background-color: black;
+        position: fixed;
+        display: flex;
+        vertical-align: middle;
+        border: none;
+        width: 100%;
+        height: 9%;
+    }
+    .appPosts{
+        width: auto;
+        margin: none;
+    }
+    .appPosts h3{
+        color: white;
+    }
+    .instagramLogo{
+        height: 27px;
+        width: 90px;
+    }
+    .appLoginContainer p{
+        color: white;
+    }
+    .MuiAvatar-root{
+        width: 22px;
+        height: 22px;
+    }
+    #appPosts{
+        padding: 1px;
+        background-color: black;
+    }
+    .fas{
+        color: white;
+    }
 }
